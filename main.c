@@ -4,10 +4,12 @@
 
 int main(int argc, char **argv)
 {
-    t_error **tErrors = init_errors();
+//    t_error **tErrors = init_errors();
+//
+//    if (argc < 2)
+//        raise(tErrors[USAGE]);
+//
+//    init_base(argv[1], tErrors);
 
-    if (argc < 2)
-        raise(tErrors[USAGE]);
-
-    init_base(argv[1], tErrors);
+    printf("%d", mx_strncmp("Aaaa", "Bbbb", 3));
 }

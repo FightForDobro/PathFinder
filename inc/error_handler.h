@@ -8,7 +8,6 @@ enum e_error
     USAGE,
     F_DNE,
     F_EMPTY,
-
 };
 
 typedef struct s_error

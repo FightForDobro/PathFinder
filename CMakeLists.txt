@@ -4,4 +4,11 @@ project(PathFinder C)
 set(CMAKE_C_STANDARD 11)
 
 include_directories(inc)
-add_executable(PathFinder main.c src/error_handler/raise_error.c inc/error_handler.h src/error_handler/init_error.c src/base_handler/init_base.c inc/base_handler.h src/base_handler/get_file_size.c)
+include_directories(libmx/inc)
+
+file(GLOB_RECURSE SOURCES RELATIVE ${CMAKE_SOURCE_DIR} "src/*.c")
+file(GLOB_RECURSE HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "inc/*.h")
+file(GLOB_RECURSE LIB RELATIVE ${CMAKE_SOURCE_DIR} "libmx/src/*.c")
+file(GLOB_RECURSE LIB_HEADERS RELATIVE ${CMAKE_SOURCE_DIR} "libmx/inc/*.h")
+
+add_executable(PathFinder main.c ${SOURCES} ${LIB} ${HEADERS} ${LIB_HEADERS})

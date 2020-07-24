@@ -33,6 +33,10 @@ static t_graph *init_graph_part(t_graph *graph)
     if ((graph->file_size = get_file_size(graph->fd)) == 0)
         raise(graph->tErrors[F_EMPTY]);
 
+//    char *first_line = atoi()
+
+//    if ((graph->islands_count = mx_read_line()))
+
     return graph;
 }
 
