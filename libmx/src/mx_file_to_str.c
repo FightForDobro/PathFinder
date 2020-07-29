@@ -2,7 +2,6 @@
 
 char *mx_file_to_str(const char *file) {
     int f = open(file, O_RDONLY);
-
     if (f < 0) return NULL;
 
     char buf[1];
@@ -10,6 +9,8 @@ char *mx_file_to_str(const char *file) {
 
     while (read(f, &buf, 1))
         str_size++;
+
+    if (str_size == 0) return NULL;
 
     char *result = mx_strnew(str_size);
 

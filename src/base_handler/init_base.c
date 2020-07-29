@@ -33,9 +33,10 @@ static t_graph *init_graph_part(t_graph *graph)
     if ((graph->file_size = get_file_size(graph->fd)) == 0)
         raise(graph->tErrors[F_EMPTY]);
 
-//    char *first_line = atoi()
+    char *first_line = mx_m_read_line('\n', graph->filename);
 
-//    if ((graph->islands_count = mx_read_line()))
+    if (!mx_is_number(first_line))
+        raise(graph->tErrors[FL_INV]);
 
     return graph;
 }

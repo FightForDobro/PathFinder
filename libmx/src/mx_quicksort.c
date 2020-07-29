@@ -1,19 +1,18 @@
 #include "libmx.h"
 
-static void logic(char **arr, int *i, int *j, char *pivot, int *swaps) {
-    while (*i <= *j) {
+static void comparator(char **arr, int pivot, int *l, int *r) {
+    for (; mx_strlen(arr[*l]) < pivot; ++*l);
+    for (; mx_strlen(arr[*r]) > pivot; --*r);
+}
 
-        while (mx_strlen(arr[*i]) - mx_strlen(pivot) < 0)
-            *i += 1;
-
-        while (mx_strlen(arr[*j]) - mx_strlen(pivot) > 0)
-            *j -= 1;
-
-        if (*i <= *j) {
-            str_swap(&arr[*i], &arr[*j], swaps);
-            *i += 1;
-            *j -= 1;
+static void quick_sort(char **arr, int *l, int *r, int *count) {
+    if (*l <= *r) {
+        if ((*l != *r) && (mx_strlen(arr[*l]) != mx_strlen(arr[*r]))) {
+            str_swap(&arr[*l], &arr[*r]);
+            ++*count;
         }
+        ++*l;
+        --*r;
     }
 }
 
@@ -24,26 +23,22 @@ static void logic(char **arr, int *i, int *j, char *pivot, int *swaps) {
  * @param high high
  * @return count of swaps
  */
-int mx_quicksort(char **arr, int low, int high) {
+int mx_quicksort(char **arr, int left, int right) {
+    int pivot;
+    int l = left;
+    int r = right;
+    int count = 0;
 
-    if (arr == NULL || *arr == NULL) return -1;
-    if (low >= high) return 0;
-
-    int swaps = 0;
-
-    int middle = low + (high - low) / 2;
-    char *pivot = arr[middle];
-
-    int i = low;
-    int j = high;
-
-    logic(arr, &i, &j, pivot, &swaps);
-
-    if (low < j)
-        swaps += mx_quicksort(arr, low, j);
-
-    if (high > i)
-        swaps += mx_quicksort(arr, i, high);
-
-    return swaps;
+    if (!arr)
+        return -1;
+    pivot = mx_strlen(arr[(left + (right - left) / 2)]);
+    while (l <= r) {
+        comparator(arr, pivot, &l, &r);
+        quick_sort(arr, &l, &r, &count);
+    }
+    if (left < r)
+        count += mx_quicksort(arr, left, r);
+    if (l < right)
+        count += mx_quicksort(arr, l, right);
+    return count;
 }

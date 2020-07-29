@@ -21,7 +21,7 @@ int mx_binary_search(char **arr, int size, const char *s, int *count) {
         c++;
 
         mid = (low + high) / 2;
-        int comp_result = mx_strcmp(arr[mid], (char *) s);
+        int comp_result = mx_strcmp(arr[mid], (char *)s);
 
         if (comp_result == 0) {
             *count = c;

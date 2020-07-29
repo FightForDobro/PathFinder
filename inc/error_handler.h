@@ -1,13 +1,14 @@
 #ifndef PATHFINDER_ERROR_HANDLER_H
 #define PATHFINDER_ERROR_HANDLER_H
 
-#define ERROR_COUNT 1
+#define ERROR_COUNT 4
 
 enum e_error
 {
     USAGE,
     F_DNE,
     F_EMPTY,
+    FL_INV
 };
 
 typedef struct s_error

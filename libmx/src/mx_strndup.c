@@ -8,17 +8,10 @@
  * @date 7/7/2020
  */
 char *mx_strndup(const char *s1, size_t n) {
-    char *string = malloc(n + 1);
+    char *new_str = mx_strnew(n);
 
-    for (size_t i = 0; i < n; i++) {
+    if (new_str == NULL || s1 == NULL) return NULL;
 
-        if (*s1)
-            string[i] = *s1++;
-        else
-            string[i] = '\0';
-    }
-
-    string[n + 1] = '\0';
-
-    return string;
+    mx_strncpy(new_str, s1, n);
+    return new_str;
 }

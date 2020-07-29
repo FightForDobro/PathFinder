@@ -9,6 +9,8 @@
  * • returns NULL if the string str does not exist or string trim fails
  */
 char *mx_strtrim(const char *str) {
+    if (!str || str == NULL) return NULL;
+
     char *result = mx_strnew(mx_strlen(str));
 
     /* Delete first part */

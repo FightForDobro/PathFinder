@@ -19,4 +19,5 @@ void mx_print_strarr(char **arr, const char *delim) {
         size++;
     }
     mx_printstr(arr[size]);
+    mx_printstr("\n");
 }

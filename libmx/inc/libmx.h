@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <malloc/malloc.h>
 
 typedef struct s_list
 {
@@ -34,7 +35,10 @@ int mx_quicksort(char **arr, int left, int right);
 int mx_get_hex_digits_count(unsigned long num);
 int mx_intlen(int num);
 bool mx_is_whitespace(char chr);
-void str_swap(char **str1, char **str2, int *swaps);
+void str_swap(char **str1, char **str2);
+bool mx_isupper(char chr);
+int mx_atoi(const char *str);
+
 
 /* Strings Pack */
 int mx_strlen(const char *string);
@@ -67,6 +71,9 @@ char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 char *mx_strncat(char *s1, const char *s2, int num);
 char *mx_delete_trailing(char *string, char chr);
 int mx_strncmp(char *s1, char *s2, int n);
+char  *mx_m_read_line(char delim, const char *filename);
+bool mx_isdigit(int c);
+bool mx_is_number(char *num);
 
 /* Memory Pack */
 void *mx_memset(void *b, int c, size_t len);

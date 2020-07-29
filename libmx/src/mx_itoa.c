@@ -22,7 +22,7 @@ char *mx_itoa(int number) {
         }
         result[num_len] = '\0';
         while (number) {
-            result[--num_len] = (char) ((number % 10) + 48); // Get last digit and convert it to char;
+            result[--num_len] = (char)((number % 10) + 48); // Get last digit and convert it to char;
             number /= 10; // Remove last digit
         }
     }

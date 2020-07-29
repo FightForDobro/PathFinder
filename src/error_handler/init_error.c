@@ -54,6 +54,18 @@ static t_error *init_f_empty(char *file_name)
     return f_empty;
 }
 
+static t_error *init_first_line_empty()
+{
+    t_error *fl_empty = malloc(sizeof(t_error));
+
+    fl_empty->error_id = FL_INV;
+    fl_empty->error_msg = mx_strnew(mx_strlen("error: line 1 is not valid"));
+    mx_strcpy(fl_empty->error_msg, "error: line 1 is not valid");
+    fl_empty->error_msg_len = mx_strlen(fl_empty->error_msg);
+
+    return fl_empty;
+}
+
 /**
  * Initialize all error structs
  * @return array of error structs
@@ -69,6 +81,7 @@ t_error **init_errors(int argc, char **argv)
 
     tErros[1] = init_f_dne(argv[1]);
     tErros[2] = init_f_empty(argv[1]);
+    tErros[3] = init_first_line_empty();
 
     return tErros;
 }

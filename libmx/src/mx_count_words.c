@@ -6,26 +6,52 @@
  * @param c Delimiter
  * @return words count
  */
+//int mx_count_words(const char *str, char c) {
+//    if (!str || !c || !*str)
+//        return -1;
+//
+//    char substr[2] = {c, '\0'};
+//
+//    char *new_str = mx_delete_trailing((char *)str, c);
+//
+//    int sub_count = mx_count_substr(new_str, substr);
+//
+//    int result = 0;
+//
+//    if (new_str[0] == c || new_str[mx_strlen(new_str) - 1])
+//        result -= 1;
+//
+////    if ((sub_count & 1) == 1 && sub_count == 1)
+////        result += 1;
+//
+//    if (sub_count)
+//
+//    if (sub_count == 1 && !(new_str[0] == c || new_str[mx_strlen((char *)new_str) - 1] == c))
+//        result += 1;
+//    mx_strdel(&new_str);
+//    return result + sub_count;
+//}
+
 int mx_count_words(const char *str, char c) {
-    if (!str || !c || !*str)
+    if (str == NULL)
         return -1;
 
-    char substr[2] = {c, '\0'};
+    bool word = false;
+    int result = 0;
 
     char *new_str = mx_delete_trailing((char *)str, c);
 
-    int sub_count = mx_count_substr(new_str, substr);
+    while (*new_str) {
 
-    int result = 0;
+        if (*new_str != c)
+            word = true;
 
-    if (new_str[0] == c || new_str[mx_strlen(new_str) - 1])
-        result -= 1;
+        if (word && *(new_str + 1) == c && *(new_str + 1) != '\0' && *(new_str + 2) != '\0')
+            result++;
 
-    if ((sub_count & 1) == 1 && sub_count > 1)
-        result += 1;
+        new_str++;
+        word = false;
+    }
 
-    if (sub_count == 1 && !(new_str[0] == c || new_str[mx_strlen((char *)new_str) - 1] == c))
-        result += 1;
-    mx_strdel(&new_str);
-    return result + sub_count;
+    return word == true ? result : result + 1;
 }

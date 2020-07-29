@@ -10,14 +10,14 @@
 unsigned long mx_hex_to_nbr(const char *hex) {
     if (hex == NULL) return 0;
     unsigned long result = 0;
-    int hex_len = mx_strlen((char *) hex) - 1;
+    int hex_len = mx_strlen((char *)hex) - 1;
 
     while (*hex) {
         if (*hex <= 9)
-            result += (unsigned long) ((*hex++ - 48) * mx_pow(16, hex_len--));
+            result += (unsigned long)((*hex++ - 48) * mx_pow(16, hex_len--));
 
         else
-            result += (unsigned long) ((*hex++ - 55) * mx_pow(16, hex_len--));
+            result += (unsigned long)((mx_isupper(*hex) ? *hex++ - 55 : *hex++ - 87) * mx_pow(16, hex_len--));
     }
 
     return result;

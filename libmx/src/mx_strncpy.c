@@ -8,12 +8,8 @@
  * @return dst
  */
 char *mx_strncpy(char *dst, const char *src, int len) {
-    while (len-- && *src) {
-        *dst = *src++;
-        dst++;
-    }
-
-    *dst = *src;
-
-    return dst;
+    char *ptr = &*dst;
+    dst[len] = '\0';
+    while (len-- && (*dst++ = *src++));
+    return ptr;
 }

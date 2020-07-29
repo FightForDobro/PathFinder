@@ -45,6 +45,8 @@ int mx_read_line(char **lineptr, size_t buf_size, char delim, const int fd) {
             buf[index] = '\0';
             *lineptr = mx_strjoin(*lineptr, buf);
         }
+        mx_strdel(&buf);
+        buf = mx_strnew(buf_size);
     }
     if (r < 0) return -1;
     return mx_strlen(*lineptr);

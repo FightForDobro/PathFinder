@@ -18,7 +18,7 @@ int mx_count_substr(const char *str, const char *sub) {
 
     /************************************ Very beautiful part of code *************************************************/
     for (int i = mx_get_substr_index(str, sub); i != -1 && *str; count++, i = mx_get_substr_index(str, sub))
-        str = &str[i + mx_strlen((char *) sub)];
+        str = &str[i + mx_strlen((char *)sub)];
     /******************************************************************************************************************/
 
     return count;

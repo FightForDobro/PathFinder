@@ -22,7 +22,7 @@ char **mx_strsplit(const char *s, char c) {
         while (s[i++] != c)
             substr_len++;
         arr[words] = mx_strnew(substr_len - 1);
-        mx_strncpy(arr[words], s, substr_len - 1);
+        mx_strncpy(arr[words], s, substr_len);
         s += substr_len; // Move pointer to correct position
         words++;
         i = 0;
