@@ -71,7 +71,7 @@ char *mx_replace_substr(const char *str, const char *sub, const char *replace);
 char *mx_strncat(char *s1, const char *s2, int num);
 char *mx_delete_trailing(char *string, char chr);
 int mx_strncmp(char *s1, char *s2, int n);
-char  *mx_m_read_line(char delim, const char *filename);
+char  *mx_m_read_line(char delim, const char *filename, const int fd, int skip);
 bool mx_isdigit(int c);
 bool mx_is_number(char *num);
 

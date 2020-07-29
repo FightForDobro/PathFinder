@@ -6,7 +6,7 @@
  * @param delim
  * @return size of line or -1 if file F_DNE
  */
-static int get_line_size(const char *filename, char delim){
+static int get_line_size(const char *filename, char delim, int skip){
     char buf[1];
     int fd = open(filename, O_RDONLY);
 
@@ -15,12 +15,17 @@ static int get_line_size(const char *filename, char delim){
     int size = 0;
     while (read(fd, &buf, 1))
     {
-        if (buf[0] == delim)
+        if (buf[0] == delim && skip > 0)
+            skip--;
+
+        if (buf[0] == delim && skip <= 0)
         {
             close(fd);
             return size;
         }
-        size++;
+
+        if (skip <= 0)
+            size++;
     }
     close(fd);
     return size;
@@ -32,17 +37,14 @@ static int get_line_size(const char *filename, char delim){
  * @param filename
  * @return new_string or NULL in case of errors
  */
-char  *mx_m_read_line(char delim, const char *filename) {
-    int line_size = get_line_size(filename, delim);
+char  *mx_m_read_line(char delim, const char *filename, const int fd, int skip) {
+    int line_size = get_line_size(filename, delim, skip);
 
     if (line_size == -1)
         return NULL;
-
     char *result = mx_strnew(line_size);
-    int fd = open(filename, O_RDONLY);
 
     read(fd, result, line_size);
-    close(fd);
 
     return result;
 }
