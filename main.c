@@ -11,5 +11,15 @@ int main(int argc, char **argv)
 
     init_base(argv[1], tErrors);
 
+
+//    while (1) {
+//        char *result = mx_strnew(100);
+//        scanf("%s", result);
+//
+//        printf("%d", mx_check_str_int(result));
+//    }
+//    int fd = open("../assets/correct", O_RDONLY);
+//    char *new_string = mx_m_read_line('\n', "../assets/correct", fd, 0);
+
     return 0;
 }

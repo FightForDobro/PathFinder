@@ -8,7 +8,11 @@ enum e_error
     USAGE,
     F_DNE,
     F_EMPTY,
-    FL_INV
+    FL_EMPTY,
+    NL_INV,
+    NOI_INV,
+    DUP_B,
+    SUM_MMI
 };
 
 typedef struct s_error

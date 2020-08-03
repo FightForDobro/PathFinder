@@ -6,7 +6,7 @@
 typedef struct s_island
 {
     char *island_connect[2];
-    int bridge_length;
+    long long bridge_length;
 }              t_island;
 
 typedef struct s_graph
@@ -21,7 +21,7 @@ typedef struct s_graph
     char **islands;
     t_island **islands_struct;
 
-    int distance_sum;
+    long long distance_sum;
 
     /* Error parts */
     t_error **tErrors;
@@ -29,6 +29,8 @@ typedef struct s_graph
 }              t_graph;
 
 t_graph *init_base(char *filename, t_error **tErros);
+t_graph *validate_connections(t_graph *graph);
+void mx_reopen_file(t_graph **pGraph);
 
 /* Utils */
 int get_file_size(int fd);

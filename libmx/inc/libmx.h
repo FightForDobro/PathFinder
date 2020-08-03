@@ -74,6 +74,9 @@ int mx_strncmp(char *s1, char *s2, int n);
 char  *mx_m_read_line(char delim, const char *filename, const int fd, int skip);
 bool mx_isdigit(int c);
 bool mx_is_number(char *num);
+char *mx_makestring(char **parts, size_t parts_count);
+bool mx_check_str_int(char *num);
+long long mx_atoll(const char *str);
 
 /* Memory Pack */
 void *mx_memset(void *b, int c, size_t len);

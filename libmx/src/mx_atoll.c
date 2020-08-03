@@ -1,8 +1,8 @@
 #include "libmx.h"
 
-int mx_atoi(const char *str) {
+long long mx_atoll(const char *str) {
     int i = 0;
-    int sum = 0;
+    long long sum = 0;
     int sign = 1;
     char *s = (char *)str;
 
@@ -14,8 +14,7 @@ int mx_atoi(const char *str) {
         i++;
     }
 
-    if (s[i] == '+')
-    {
+    if (s[i] == '+') {
         sign = 1;
         i++;
     }

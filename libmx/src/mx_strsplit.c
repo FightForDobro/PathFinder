@@ -9,7 +9,7 @@
  */
 char **mx_strsplit(const char *s, char c) {
     int words_count = mx_count_words(s, c);
-    char **arr = malloc(sizeof(char *) * words_count);
+    char **arr = malloc(sizeof(char *) * words_count + 1);
 
     int substr_len = 0;
     int words = 0;
