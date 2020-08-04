@@ -15,20 +15,21 @@ static int get_line_size(const char *filename, char delim, int skip){
     int size = 0;
     while (read(fd, &buf, 1))
     {
+//        write(1, &buf[0], 1);
         if (buf[0] == delim && skip > 0)
             skip--;
 
         else if (buf[0] == delim && skip <= 0)
         {
             close(fd);
-            return size;
+            return size == 1 ? size + 1 : size;
         }
 
         if (skip <= 0)
             size++;
     }
     close(fd);
-    return size;
+    return size == 1 ? size + 1 : size;
 }
 
 /**
@@ -45,7 +46,6 @@ char  *mx_m_read_line(char delim, const char *filename, const int fd, int skip) 
 
     char *result = mx_strnew(line_size);
     read(fd, result, line_size);
-
     result = mx_del_extra_spaces(result);
 
     return result;

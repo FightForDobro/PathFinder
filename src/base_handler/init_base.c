@@ -17,6 +17,12 @@ static t_graph *init_file_part(char *filename, t_error **tErros)
 
     graph->tErrors = tErros;
 
+    if (graph->fd < 0)
+        raise(graph->tErrors[F_DNE]);
+
+    if ((graph->file_size = get_file_size(graph->filename)) == 0)
+        raise(graph->tErrors[F_EMPTY]);
+
     return graph;
 }
 
@@ -27,21 +33,18 @@ static t_graph *init_file_part(char *filename, t_error **tErros)
  */
 static t_graph *init_graph_part(t_graph *graph)
 {
-    if (graph->fd < 0)
-        raise(graph->tErrors[F_DNE]);
-
-    if ((graph->file_size = get_file_size(graph->fd)) == 0)
-        raise(graph->tErrors[F_EMPTY]);
-    mx_reopen_file(&graph); // ToDo: Change that
-
     char *first_line = mx_m_read_line('\n', graph->filename, graph->fd, 0);
 
-    // ToDo: Check Zero and negative
     if (!mx_is_number(first_line))
         raise(graph->tErrors[FL_EMPTY]);
 
-    graph->islands_count = mx_atoi(first_line);
+    if ((graph->islands_count = mx_atoi(first_line)) <= 0)
+        raise(graph->tErrors[FL_EMPTY]);
 
+    char *file = mx_file_to_str(graph->filename);
+    graph->line_count = mx_count_substr(file, "\n");
+    mx_strdel(&file);
+    graph->current_line = 1;
     return graph;
 }
 

@@ -38,6 +38,7 @@ bool mx_is_whitespace(char chr);
 void str_swap(char **str1, char **str2);
 bool mx_isupper(char chr);
 int mx_atoi(const char *str);
+int mx_char_arr_size(char **arr);
 
 
 /* Strings Pack */
@@ -77,6 +78,9 @@ bool mx_is_number(char *num);
 char *mx_makestring(char **parts, size_t parts_count);
 bool mx_check_str_int(char *num);
 long long mx_atoll(const char *str);
+bool mx_isalpha(char chr);
+bool mx_isonlyalpha(char *string);
+
 
 /* Memory Pack */
 void *mx_memset(void *b, int c, size_t len);

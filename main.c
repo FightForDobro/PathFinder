@@ -20,6 +20,13 @@ int main(int argc, char **argv)
 //    }
 //    int fd = open("../assets/correct", O_RDONLY);
 //    char *new_string = mx_m_read_line('\n', "../assets/correct", fd, 0);
+//    int c = 4;
+//    int s = 0;
+//    int fd = open("../assets/invalid_max_int", O_RDONLY);
+//    char *new_string;
+//    while (c--) {
+//        new_string = mx_m_read_line('\n', "../assets/invalid_max_int", fd, s++);
+//    }
 
     return 0;
 }

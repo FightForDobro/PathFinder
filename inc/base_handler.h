@@ -17,11 +17,13 @@ typedef struct s_graph
     int file_size;
 
     /* Graph parts */
+    int line_count;
     int islands_count;
     char **islands;
     t_island **islands_struct;
 
     long long distance_sum;
+    int current_line;
 
     /* Error parts */
     t_error **tErrors;
@@ -33,7 +35,7 @@ t_graph *validate_connections(t_graph *graph);
 void mx_reopen_file(t_graph **pGraph);
 
 /* Utils */
-int get_file_size(int fd);
+int get_file_size(char *file_name);
 
 
 #endif //PATHFINDER_BASE_HANDLER_H

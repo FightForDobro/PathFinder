@@ -62,7 +62,7 @@ static t_error *init_first_line_empty()
     return fl_empty;
 }
 
-static t_error *init_num_line_invalid(int line_num)
+t_error *init_num_line_invalid(int line_num)
 {
     t_error *nl_invalid = malloc(sizeof(t_error));
     char *line_num_s = mx_itoa(line_num);
@@ -129,6 +129,9 @@ t_error **init_errors(int argc, char **argv)
     tErros[1] = init_f_dne(argv[1]);
     tErros[2] = init_f_empty(argv[1]);
     tErros[3] = init_first_line_empty();
+    tErros[5] = init_invalid_number_of_islands();
+    tErros[6] = init_duplicate_bridges();
+    tErros[7] = init_sum_more_max_int();
 
     return tErros;
 }

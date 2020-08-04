@@ -1,7 +1,7 @@
 #ifndef PATHFINDER_ERROR_HANDLER_H
 #define PATHFINDER_ERROR_HANDLER_H
 
-#define ERROR_COUNT 4
+#define ERROR_COUNT 9
 
 enum e_error
 {
@@ -23,6 +23,7 @@ typedef struct s_error
 }              t_error;
 
 t_error **init_errors();
+t_error *init_num_line_invalid(int line_num);
 void raise(t_error *error);
 
 #endif //PATHFINDER_ERROR_HANDLER_H
